@@ -1,3 +1,9 @@
+/*
+Time complexity:0(n)
+Space complexity:0(1)
+*/
+
+
 class Solution {
 public:
     int compress(vector<char>& chars) {
