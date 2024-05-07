@@ -11,11 +11,29 @@
  */
 class Solution {
 public:
+    //morris inorder traversal(using thread)
     void inorder(TreeNode *root, vector<int>& ans){
-        if(root == NULL) return;
-        inorder(root -> left, ans);
-        ans.push_back(root -> val);
-        inorder(root -> right, ans);
+         while(root != NULL){
+        if(root -> left == NULL){
+            ans.push_back(root -> val);
+            root = root -> right;
+        }
+        else{
+            TreeNode *prev = root -> left;
+            while(prev -> right && prev -> right != root){
+                prev = prev -> right;
+            }
+            if(prev -> right == NULL){
+                prev -> right = root;
+                root = root -> left;
+            }
+            else{
+                prev -> right = NULL;
+                ans.push_back(root -> val);
+                root = root -> right;
+            }
+        }
+    }
 }
 
     vector<int> inorderTraversal(TreeNode* root) {
